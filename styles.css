@@ -24,3 +24,15 @@ h1 {
     float: center;
 }
 
+#hit, #stand {
+    background-color: goldenrod;
+    color:black;
+    font-size: 1.5em;
+    font-style: bold;
+    width: 5.5rem;
+    margin: 0.1rem;
+    border: .01rem;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10%;
+}
