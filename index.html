@@ -5,15 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack</title>
+    <!-- initialize Bootstrap and custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Dealer section -->
+    <!-- Dealer section.  'dealerCardSum' is what JS calls 
+        to calculate the dealer's cards.  'dealerCards' is 
+        the display -->
+        <h1>
+            Dealer:
+            <span id="dealerCardSum">
+
+            </span>
+        </h1>
+        <div id="dealerCards">
+            <img src="\cards\ScaerieTale_CardBack.png"> 
+            <img src="\cards\ace_of_spades2.png">
+        </div>
+        
     
     
     
     <!--Player section-->
-
-
+    <h1>
+        You:
+        <span id="playerCardSum">
+        </span>        </span>
+    </h1>
+    <div class="row">
+        <span class="col-sm-4" align="right">
+            <h2>
+                <p id="result"> 
+                    <!-- Win/loss/tie game  -->
+                 </p>
+            </h2>
+        </span>
+        <span class="col-sm-1">
+            <button id="hit">Hit</button><br>
+            <button id="stand">Stand</button>
+        </span>
+    <span class="col-sm-6" id="playerCards" align="left">
+        <img src="\cards\ScaerieTale_CardBack.png"> 
+            <img src="\cards\ace_of_spades2.png">
+    </span>
     
+
+
+
+
+
 </body>
 </html>
