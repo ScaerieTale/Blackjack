@@ -31,6 +31,7 @@ corresponding to the image names in /cards/ subfolder */
 window.onload = function() {
     buildCardDeck();
     shuffle();
+    gameStart();
 }
 
 
@@ -54,6 +55,10 @@ function shuffle() {
         newDeck[i] = newDeck[j];
         newDeck[j] = temp;
     }
-    console.log(newDeck);
 }
 
+/* */
+function gameStart() {
+    hidden = newDeck.pop();
+    dealerCardSum += getValue(hidden); 
+}
