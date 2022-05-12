@@ -18,7 +18,17 @@ let playerCanHit = true;
 
 // end of global variables
 
+// Functions
 
+/* A set of functions to build the game deck as soon as the
+window finishes loading in the script */
 
+function buildCardDeck() {
+    let cardFaces = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+}
+
+window.onload = function() {
+    buildDeck();
+}
 
 
