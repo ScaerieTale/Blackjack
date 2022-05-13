@@ -71,7 +71,7 @@ function gameStart() {
     while (dealerCardSum < 17) {
         let newCardImage = document.createElement("img");
         let newCard = newDeck.pop();
-        newCardImage.src = "/cards/" + newCard + ".png";
+        newCardImage.src = "./cards/" + newCard + ".png";
         dealerCardSum += getValue(newCard);
         dealerHeldAces += checkForAce(newCard);
         document.getElementById("dealerCards").append(newCardImage);
@@ -94,7 +94,7 @@ function hit() {
     }
     let newCardImage = document.createElement("img");
     let newCard = newDeck.pop();
-    newCardImage.src = "/cards/" + newCard + ".png";
+    newCardImage.src = "./cards/" + newCard + ".png";
     playerCardSum += getValue(newCard);
     playerHeldAces += checkForAce(newCard);
     document.getElementById("playerCards").append(newCardImage);
