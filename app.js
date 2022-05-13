@@ -89,7 +89,7 @@ function gameStart() {
 
 // "Hit" button functionality
 function hit() {
-    if (playerCanHit === false) {
+    if (!playerCanHit) {
         return;
     }
     let newCardImage = document.createElement("img");
