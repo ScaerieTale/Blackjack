@@ -35,6 +35,7 @@ window.onload = function() {
 }
 
 
+
 function buildCardDeck() {
     let cardFaces = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"];
     let cardTypes = ["clubs", "diamonds", "hearts", "spades"];
@@ -57,11 +58,16 @@ function shuffle() {
     }
 }
 
-/* */
+
 function gameStart() {
     hidden = newDeck.pop();
     dealerCardSum += getValue(hidden);
     dealerHeldAces += checkForAce(hidden);
+    
+    /* Game loop for Dealer's turn.
+    While the loop runs, as long as
+    the dealer's hand adds up to < 17
+    it gets to draw another card. */
     while (dealerCardSum < 17) {
         let newCardImage = document.createElement("img");
         let newCard = newDeck.pop();
@@ -69,6 +75,43 @@ function gameStart() {
         dealerCardSum += getValue(newCard);
         dealerHeldAces += checkForAce(newCard);
         document.getElementById("dealerCards").append(newCardImage);
+
+    }
+    // Deals the Player's initial hand of 2 cards
+    for (i = 0; i < 2; i++) {
+        hit();
+    }
+    // Hit and Stand button logic
+    document.getElementById("hit").addEventListener("click", hit);
+
+    document.getElementById("stand").addEventListener("click", stand);
+}
+
+// "Hit" button functionality
+function hit() {
+    if (playerCanHit === false) {
+        return;
+    }
+    let newCardImage = document.createElement("img");
+    let newCard = newDeck.pop();
+    newCardImage.src = "/cards/" + newCard + ".png";
+    playerCardSum += getValue(newCard);
+    playerHeldAces += checkForAce(newCard);
+    document.getElementById("playerCards").append(newCardImage);
+
+    /* Hit logic.  dropAce means if the total
+    is over 21, one ace gets dropped from 11 to 1 */
+    if (dropAce(playerCardSum + playerHeldAces) > 21) {
+        playerCanHit = false;
+    }
+
+}
+
+function dropAce(cardSum, heldAces) {
+    while (cardSum > 21 && heldAces > 0) {
+        playerCardSum -= 10;
+        playerHeldAces -= 1;
+        return playerCardSum;
     }
 }
 
@@ -104,3 +147,4 @@ function checkForAce(card) {
     }
     return 0;
 }
+
