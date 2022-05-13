@@ -60,5 +60,47 @@ function shuffle() {
 /* */
 function gameStart() {
     hidden = newDeck.pop();
-    dealerCardSum += getValue(hidden); 
+    dealerCardSum += getValue(hidden);
+    dealerHeldAces += checkForAce(hidden);
+    while (dealerCardSum < 17) {
+        let newCardImage = document.createElement("img");
+        let newCard = newDeck.pop();
+        newCardImage.src = "/cards/" + newCard + ".png";
+        dealerCardSum += getValue(newCard);
+        dealerHeldAces += checkForAce(newCard);
+        document.getElementById("dealerCards").append(newCardImage);
+    }
+}
+
+/* getValue splits the card into its
+constituent parts, for example, Queen
+of Hearts becomes an array, [Queen,
+Hearts], hence cardIs, as in card
+is x of y.  cardIs[0] pulls the
+index at 0, or Queen. If it IS a number
+We'll just return the integer (int) */
+
+function getValue(card) {
+    let cardIs = card.split("_of_");
+    let cardValue = cardIs[0];
+    
+    /* literally "If the value is an Ace, return 11"
+    otherwise return 10 because it's a Jack/Queen/King */
+    if (isNaN(cardValue)) {
+        if (cardValue == "ace") {
+            return 11;
+        }
+        return 10;
+    }
+    return parseInt(cardValue);
+}
+
+/* As the name suggests this function checks for if the card
+passed to it is an ace (letter 'a' at index
+0 in the string) and returns 1 to add to "HeldAces" count */
+function checkForAce(card) {
+    if(card[0] == "a") {
+        return 1;
+    }
+    return 0;
 }
